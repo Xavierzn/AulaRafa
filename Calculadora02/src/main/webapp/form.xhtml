@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	lang="pt-br">
+
+<h:head>
+	<meta http-equi="Content=Type" content="text/html; charset=ISO-8859-1"/>
+	<title>form</title>
+</h:head>
+
+<body>
+	<h:form>
+		Valor1: <h:inputText value = "#{pagBean.valor01}"/>
+		<h:commandButton value = "Valor" action = "#{pagBean.valor01}"/>
+		
+		Valor2: <h:inputText value = "#{pagBean.valor02}"/>
+		<h:commandButton value = "Valor" action = "#{pagBean.valor02}"/>
+		
+		 Valor3: <h:inputText value = "#{pagBean.valor03}"/>
+		<h:commandButton value = "Valor" action = "#{pagBean.valor03}"/>
+		
+		<h:commandButton value = "Somar" action = "result"></h:commandButton>
+	
+	</h:form>
+	
+</body>
+	
+</html>
