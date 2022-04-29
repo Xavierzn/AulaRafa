@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	lang="pt-br">
+
+<h:head>
+	<meta http-equi="Content=Type" content="text/html; charset=ISO-8859-1"/>
+	<title>informações</title>
+</h:head>
+
+<body>
+	<h:panelGrid columns="2">
+	<f:facet name="header">
+		Cadastro de usuarios
+	</f:facet>
+	
+		<h:outputText value = "nome"/>	
+		<h:outputText value = "#{cadastro.nome}"/>
+		
+		<h:outputText value = "E-mail"/>	
+		<h:outputText value = "#{cadastro.email}"/>
+		
+		<h:outputText value = "senha"/>	
+		<h:outputText value = "#{cadastro.senha1}"/>
+		
+		<h:outputText value = "confirmaçao de senha"/>	
+		<h:outputText value = "#{cadastro.senha2}"/>
+	
+		<h:outputText value = "Sexo"></h:outputText>	
+		<h:outputText value = "Masculino" rendered="#{cadastro.sexo == 'M'}"/>
+		<h:outputText value = "Sexo"></h:outputText>	
+		<h:outputText value = "Feminino" rendered="#{cadastro.sexo == 'F'}"/>
+		
+		<h:outputText value = "Deseja receber o e-mail"/>	
+		<h:outputText value = "Sim" rendered="#{cadastro.receberEmails}"></h:outputText>	
+		<h:outputText value = "Não" rendered="#{!cadastro.receberEmails}"></h:outputText> <!-- o ! dentro do bean, converte o true para o false -->
+		
+		<h:outputText value = "Observaição"/>
+		<h:outputText value = "#{cadastro.observacoes}"/>
+		
+		<h:outputText value = "Linguagem de programação"/>
+		<h:outputText value = "#{cadastro.linguagensAsString}"/>
+		
+	</h:panelGrid>
+	
+<body>
+	
+</html>
