@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	lang="pt-br">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+	
+<h:head>
+	<meta http-equi="Content=Type" content="text/html; charset=ISO-8859-1"/>
+	<title> Despesas </title>
+</h:head>
+<script>
+		function verificarCampos(){
+			var data = document.getElementById("f:data").value;
+			var descricao = document.getElementById("f:descricao").value;
+			var valor = document.getElementById("f:valor").value;
+			if(data ==""){
+				alert("Data não Prechida");
+				return false;
+				
+			}else{
+				if(descricao ==""){
+					alert("Descrição não Prenchido");
+					return false;
+				}else{
+					
+					if(valor ==""){
+					alert("Valor não prencida ");
+					return false;}
+					
+					
+				}
+				}
+			
+			
+			return true;
+		}	
+	</script>
+<body>
+
+<h:outputStylesheet library = "css" name = "styles.css" /> 
+	<h:form id="f">
+	
+	<h:panelGroup value="" >
+	<h:panelGrid>
+	
+	<h:column>
+	<h:outputText value="Data"></h:outputText>
+	<br/>
+	<h:inputText value="#{tabela.data1}" id="data"></h:inputText>
+	</h:column>
+	
+	<h:column>
+	<h:outputText value="Descrição"></h:outputText>
+	<br/>
+	<h:inputText value="#{tabela.desc1}" id="descricao"></h:inputText>
+	</h:column>
+	
+	<h:column>
+	<h:outputText value="valor"></h:outputText>
+	<br/>
+	<h:inputText value="#{tabela.valor1}" id="valor"></h:inputText>
+	</h:column>
+	
+	<h:commandButton value="Inserir" action="#{tabela.inserir(tabela.data1,tabela.desc1,tabela.valor1)}" onclick="return verificarCampos()"></h:commandButton>
+	</h:panelGrid>
+	</h:panelGroup>
+	
+	<h:panelGroup rendered="#{tabela.a == true }">
+		<table>
+			
+			<tr>
+			<th class="cabecalho" colspan="5" >
+			Lista de Despesas
+			</th>
+			</tr>
+			
+			
+			<tr>
+			
+			<th class="cabecalho">cabeção</th>
+			<th class="cabecalho">data</th>
+			<th class="cabecalho">descricao</th>
+			<th class="cabecalho">valor</th>
+			<th class="cabecalho">operacao</th>
+						
+			</tr>
+			<ui:repeat value="#{tabela.despesas}" var="d" varStatus="st">
+			
+		<tr>
+				<td class="colNumero" colspan="1">#{st.index +1}</td>
+				
+				
+				<td class="colData" colspan="1">
+				<h:outputText value ="#{d.data}" rendered = "#{!d.edit}"/>
+				<h:inputText value ="#{d.data}" rendered = "#{d.edit}"/>
+				</td>
+				
+				<td class="colDesc">
+				<h:outputText value ="#{d.descricao}" rendered = "#{!d.edit}"/>
+				<h:inputText value ="#{d.descricao}" rendered = "#{d.edit}"/></td>
+				
+				<td class="colValor">
+				<h:outputText value ="#{d.valor}" rendered = "#{!d.edit}">
+				<f:convertNumber type="currency" locale = "pt_BR"> </f:convertNumber>
+				</h:outputText>
+				<h:inputText value ="#{d.valor}" rendered = "#{d.edit}"/>
+				</td>
+				<td class="colOp">
+				<h:panelGroup rendered="#{!d.edit}">
+				<h:commandLink value="Alterar" action="#{tabela.editar(d)}"></h:commandLink>
+				<h:commandLink value="Excluir" action="#{tabela.excluir(d)}"></h:commandLink>
+				</h:panelGroup>
+				<h:commandLink value="Gravar" action="#{tabela.gravar(d)}" rendered= "#{d.edit }"></h:commandLink>
+				</td>
+		
+		
+		</tr>
+			</ui:repeat>
+			
+		</table>
+		</h:panelGroup>
+		<br/>
+		
+		
+		<h:panelGroup rendered="#{tabela.despesas.size() == 0}">
+		<h:outputText value="Não cadastrado" styleClass="Mensage" ></h:outputText>
+		</h:panelGroup>
+	</h:form>
+	
+	
+
+</body>
+</html>
