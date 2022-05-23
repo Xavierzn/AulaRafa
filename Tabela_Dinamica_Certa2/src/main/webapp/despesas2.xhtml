@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	lang="pt-br">
+	
+<h:head>
+	<meta http-equi="Content=Type" content="text/html; charset=ISO-8859-1"/>
+	<title>Despesas</title>
+		<script>
+			
+			function verificarCampos(){ // esse comando está fazendo a verifica
+				var data = document.getElementById("f:data").value;
+				var descricao = document.getElementById("f:descricao").value;
+				var valor = document.getElementById("f:valor").value;
+				if(data ==""){
+					alert("Data não Prechida");
+					return false;
+					
+				}else{
+					if(descricao ==""){
+						alert("Descrição não Prenchido");
+						return false;
+					}else{
+						
+						if(valor ==""){
+						alert("Valor não prencida ");
+						return false;}
+						
+						
+					}
+					}
+				
+				
+				return true;
+			}	
+		</script>
+	
+</h:head>
+<body>
+<h:outputStylesheet library = "css" name ="styles.css"/> 
+<table width="100%" border="1">
+		<tr>
+			<td align="center"> <h3>CADASTRO</h3></td>
+		</tr>
+</table>
+	<h:form styleClass="form" id ="f">
+	
+	<h:panelGroup>
+	<h:panelGrid>
+	
+	<h:column>
+	<h:outputText value="Data:"></h:outputText>
+	<br/>
+	<h:inputText value="#{tabela.date}" id="data"  required="Campo obrigatório"></h:inputText>
+	</h:column>
+	
+	<h:column>
+	<h:outputText value="Descrição:"></h:outputText>
+	<br/>
+	<h:inputText value="#{tabela.desc}" id="descricao" required="Campo obrigatório"></h:inputText>
+	</h:column>
+	
+	<h:column>
+	<h:outputText value="Valor:"></h:outputText>
+	<br/>
+	<h:inputText value="#{tabela.valor}" id="valor" required="Campo obrigatório"></h:inputText>
+	</h:column>
+	
+	<h:commandButton value="Inserir" action="#{tabela.inserir(tabela.date,tabela.desc,tabela.valor)}"></h:commandButton>
+	</h:panelGrid>
+	</h:panelGroup>
+	
+	<h:panelGroup rendered="#{tabela.back == true }">
+		<table>
+			
+			<tr>
+			<th class="cabecalho" colspan="5" >
+			Lista de Despesas
+			</th>
+			</tr>
+			<tr>
+			<th class="cabecalho">Cabecalho</th>
+			<th class="cabecalho">Data</th>
+			<th class="cabecalho">Descrição</th>
+			<th class="cabecalho">Valor</th>
+			<th class="cabecalho">Operação</th>			
+			</tr>
+			<ui:repeat value="#{tabela.despesas}" var="d" varStatus="st">
+			
+		<tr>
+				<td class="colNumero" colspan="1">#{st.index +1}</td>
+				
+				
+				<td class="colData" colspan="1">
+				<h:outputText value ="#{d.data}" rendered = "#{!d.edit}"/>
+				<h:inputText value ="#{d.data}" rendered = "#{d.edit}"/>
+				</td>
+				
+				<td class="colDesc">
+				<h:outputText value ="#{d.descricao}" rendered = "#{!d.edit}"/>
+				<h:inputText value ="#{d.descricao}" rendered = "#{d.edit}"/></td>
+				
+				<td class="colValor">
+				<h:outputText value ="#{d.valor}" rendered = "#{!d.edit}">
+				<f:convertNumber type="currency" locale = "pt_BR"> </f:convertNumber>
+				</h:outputText>
+				<h:inputText value ="#{d.valor}" rendered = "#{d.edit}"/>
+				</td>
+				<td class="colOp">
+				<h:panelGroup rendered="#{!d.edit}">
+				<h:commandLink value="Alterar" action="#{tabela.editar(d)}"></h:commandLink>
+				<h:commandLink value="Excluir" action="#{tabela.excluir(d)}"></h:commandLink>
+				</h:panelGroup>
+				<h:commandLink value="Gravar" action="#{tabela.gravar(d)}" rendered= "#{d.edit}"></h:commandLink>
+				</td>
+		
+		
+		</tr>
+			</ui:repeat>
+			
+		</table>
+		</h:panelGroup>
+		<br/>
+		
+		
+		<h:panelGroup rendered="#{tabela.despesas.size()==0}">
+		<h:outputText value="Nenhum usuário cadastrado" styleClass="Message"></h:outputText>
+		</h:panelGroup>
+	</h:form>
+	
+	<table width="100%" border="1">
+		<tr>
+			<td align="center">Todos os direitos reservados</td>
+			
+		</tr>
+	</table>
+	
+	<script type="text/javascript">
+	var data = document.getElementById("Data");
+	var descricao = document.getElementById("Descrição");
+	var valor = document.getElementById("Valor");
+	if()	
+	</script>
+
+</body>
+</html>
