@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	lang="pt-br">
+	
+<h:head>
+	<meta http-equi="Content=Type" content="text/html; charset=ISO-8859-1"/>
+<title>Tela de login</title>
+</h:head>
+<body>
+
+<ui:composition>
+	 <h:form>
+	 	<h:panelGrid columns="2">
+	 	 	Nome:
+	 	 	<h:inputText value="#{login.nome}">nome</h:inputText>
+	 		Senha:
+	 		<h:inputSecret value="#{login.senha}"></h:inputSecret>
+	 	</h:panelGrid>
+	 	<h:commandButton id="login" value="Login" action="#{login.dologin}"></h:commandButton>
+	 </h:form>	
+</ui:composition>
+</body>
+</html>
