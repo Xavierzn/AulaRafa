@@ -13,22 +13,22 @@
 	<title>Despesas</title>
 		<script>
 			
-			function verificarCampos(){ // esse comando est· fazendo a verificaÁ„o dos inputs
+			function verificarCampos(){ // esse comando est√° fazendo a verifica√ß√£o dos inputs
 				var data = document.getElementById("f:data").value;
 				var descricao = document.getElementById("f:descricao").value;
 				var valor = document.getElementById("f:valor").value;
 				if(data ==""){
-					alert("Data n„o Prechida");
+					alert("Data n√£o Prechida");
 					return false;
 					
 				}else{
 					if(descricao ==""){
-						alert("DescriÁ„o n„o Prenchido");
+						alert("Descri√ß√£o n√£o Prenchido");
 						return false;
 					}else{
 						
 						if(valor ==""){
-						alert("Valor n„o prencida ");
+						alert("Valor n√£o prencida ");
 						return false;}
 						
 						
@@ -55,26 +55,26 @@
 	<h:column>
 	<h:outputText value="Data:"></h:outputText>
 	<br/>
-	<h:inputText value="#{tabela.date}" id="data"  required="Campo obrigatÛrio" ></h:inputText>
+	<h:inputText value="#{tabela.date}" id="data"  required="Campo obrigat√≥rio" ></h:inputText>
 	</h:column>
 	
 	<h:column>
-	<h:outputText value="DescriÁ„o:"></h:outputText>
+	<h:outputText value="Descri√ß√£o:"></h:outputText>
 	<br/>
-	<h:inputText value="#{tabela.desc}" id="descricao" required="Campo obrigatÛrio"></h:inputText>
+	<h:inputText value="#{tabela.desc}" id="descricao" required="Campo obrigat√≥rio"></h:inputText>
 	</h:column>
 	
 	<h:column>
 	<h:outputText value="Valor:"></h:outputText>
 	<br/>
-	<h:inputText value="#{tabela.valor}" id="valor" required="Campo obrigatÛrio"></h:inputText>
+	<h:inputText value="#{tabela.valor}" id="valor" required="Campo obrigat√≥rio"></h:inputText>
 	</h:column>
 	
 	<h:commandButton value="Inserir" action="#{tabela.inserir(tabela.date,tabela.desc,tabela.valor)}"></h:commandButton>
 	</h:panelGrid>
 	</h:panelGroup>
 	
-	<h:panelGroup rendered="#{tabela.back == true }">
+	<h:panelGroup rendered="#{tabela.back == true }"> <!-- toda vez que um produto √© cadastrado a tabela aparecer√° -->
 		<table border="2" style="color: orange;">
 			
 			<tr>
@@ -85,9 +85,9 @@
 			<tr>
 			<th class="cabecalho">Cabecalho</th>
 			<th class="cabecalho">Data</th>
-			<th class="cabecalho">DescriÁ„o</th>
+			<th class="cabecalho">Descri√ß√£o</th>
 			<th class="cabecalho">Valor</th>
-			<th class="cabecalho">OperaÁ„o</th>			
+			<th class="cabecalho">Opera√ß√£o</th>			
 			</tr>
 			
 			<ui:repeat value="#{tabela.despesas}" var="d" varStatus="st"> <!-- a var = D pode ser utilizado para ser chamada que nem o bean -->
@@ -129,7 +129,7 @@
 		
 		
 		<h:panelGroup rendered="#{tabela.despesas.size()==0}">
-		<h:outputText value="Nenhum usu·rio cadastrado" styleClass="Message"></h:outputText>
+		<h:outputText value="Nenhum usu√°rio cadastrado" styleClass="Message"></h:outputText>
 		</h:panelGroup>
 	</h:form>
 	
@@ -142,7 +142,7 @@
 	
 	<script type="text/javascript">
 	var data = document.getElementById("Data");
-	var descricao = document.getElementById("DescriÁ„o");
+	var descricao = document.getElementById("Descri√ß√£o");
 	var valor = document.getElementById("Valor");
 	if()	
 	</script>
