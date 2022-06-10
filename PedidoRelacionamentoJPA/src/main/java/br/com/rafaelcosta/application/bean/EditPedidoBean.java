@@ -20,22 +20,22 @@ import br.com.rafaelcosta.application.model.Produto;
 public class EditPedidoBean implements Serializable {
 	
 	@EJB
-	private PedidoBean pedidoBean;
+	private PedidoBean pedidoBean; // esta linha ira gravar o pedido
 	
 	@EJB
-	private ProdutoBean produtoBean;
+	private ProdutoBean produtoBean; // esta linha ira gravar o produto
 	
 	@EJB
-	private ClienteBean clienteBean;
+	private ClienteBean clienteBean; // esta linha ira gravar o cliente
 	
-	private List<Cliente> clientes;
+	private List<Cliente> clientes; 	//aqui lista todos os clientes e produtos
 	private List<Produto> produtos;
 	
-	private Integer selectedClienteId;
-	private Integer[] selectedProdutosIds;
+	private Integer selectedClienteId; // esta linha é o id do cliente
+	private Integer[] selectedProdutosIds;// esta linha é o id do produtos
 	
 	@PostConstruct
-	public void init() {
+	public void init() { // nesta linha vai mostrar os cliente e os produtos na tela
 		clientes = clienteBean.listar();
 		produtos = produtoBean.listar();
 	}

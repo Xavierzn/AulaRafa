@@ -30,12 +30,12 @@ public class ListPedidosBean implements Serializable {
 		return pedidos;
 	}
 	
-	public String pagar(Integer pedidoId, String tipo) throws Exception  {
+	public String pagar(Integer pedidoId, String tipo) throws Exception  { // aqui ele vai acerta a forma de pagamento se vai ser cartão ou boleto
 		pedidoBean.pagar(pedidoId, tipo);
 		return "pedidos?faces-redirect=true";
 	}
 	
-	public String excluir(Integer pedidoId) {
+	public String excluir(Integer pedidoId) { // esta linha ira excluir o pedido atraves do id
 		pedidoBean.excluir(pedidoId);
 		return "pedidos?faces-redirect=true";
 	}

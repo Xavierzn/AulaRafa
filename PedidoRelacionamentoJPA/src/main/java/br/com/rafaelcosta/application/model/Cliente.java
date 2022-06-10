@@ -12,11 +12,11 @@ import javax.persistence.OneToMany;
 @Entity
 public class Cliente implements Serializable {
 	
-	@Id
+	@Id // o @id ele gera o id para cada objeto
 	@GeneratedValue
 	private Integer id;
 	
-	@Column(length = 100, nullable = false)
+	@Column(length = 100, nullable = false) // o @column mapea o campo ou a propriedade que será mapeada
 	private String nome;
 	
 	@Column(length = 50, nullable = false)

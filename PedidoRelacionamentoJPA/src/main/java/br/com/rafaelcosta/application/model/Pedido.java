@@ -25,10 +25,10 @@ public class Pedido implements Serializable {
 	@GeneratedValue
 	private Integer id;
 	
-	@Column(name = "valor_total")
+	@Column(name = "valor_total") // avisar o banco que é do tipo date a coluna
 	private Double valorTotal;
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.DATE) //esta linha avisa para o banco que a esta informação é do tipo date na coluna
 	@Column(nullable = false)
 	private Date data;
 
@@ -40,7 +40,7 @@ public class Pedido implements Serializable {
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER) // esta linha faz o relaciona o pedido produto e o pedido_id, onde o produto é pego pela id 
 	@JoinTable(name = "pedido_produto", 
 		joinColumns = @JoinColumn(name = "pedido_id"),
 		inverseJoinColumns = @JoinColumn(name = "produto_id"))

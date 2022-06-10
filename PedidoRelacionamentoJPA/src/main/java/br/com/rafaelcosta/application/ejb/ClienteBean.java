@@ -15,7 +15,7 @@ public class ClienteBean {
 	@PersistenceContext
 	private EntityManager em;
 	
-	public List<Cliente> listar() {
+	public List<Cliente> listar() { // esta linha vai transforma a tabela em objeto
 		return em.createQuery("SELECT c FROM Cliente c", Cliente.class).getResultList();
 	}
 }

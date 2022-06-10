@@ -20,12 +20,13 @@ public class PedidoBean {
 	@PersistenceContext
 	private EntityManager em;
 	
-	public List<Pedido> listar() {
+	public List<Pedido> listar() { // esta lista vai carregar os pedidos da tabela
 		return em.createQuery("SELECT p FROM Pedido p", Pedido.class).getResultList();
 	}
 	
-	public void pagar(Integer pedidoId, String tipo) {
-		TipoPagamento tipoPagamento = TipoPagamento.valueOf(tipo);
+	public void pagar(Integer pedidoId, String tipo) { // esta linha recebe o id e  o tipo
+		
+		TipoPagamento tipoPagamento = TipoPagamento.valueOf(tipo); // nesta linha esta guardando o qual é o tipo do pagamento
 		Pedido pedido = em.find(Pedido.class, pedidoId);
 		
 		Pagamento pagamento = new Pagamento();
@@ -48,7 +49,7 @@ public class PedidoBean {
 		pedido.setCliente(cliente);
 		em.persist(pedido);
 		
-		double valorTotal = 0;
+		double valorTotal = 0;  // esta linha vai somar os valores dos produtos
 		for (Integer produtoId : produtosIds) {
 			Produto produto = em.find(Produto.class, produtoId);
 			pedido.getProdutos().add(produto);

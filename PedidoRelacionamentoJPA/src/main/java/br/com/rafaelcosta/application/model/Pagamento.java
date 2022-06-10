@@ -12,6 +12,8 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Pagamento implements Serializable {
+	
+	// este enum vai pradonizar a forma de pagamento
 	public enum TipoPagamento {
 		CARTAO_CREDITO,
 		BOLETO
@@ -21,11 +23,12 @@ public class Pagamento implements Serializable {
 	@GeneratedValue
 	private Integer id;
 	
-	@Enumerated(EnumType.STRING)
-	@Column(name = "tipo_pagto", length = 20, nullable = false)
+	
+	@Enumerated(EnumType.STRING) //esta linha manda as informaões do enum, os metodos de pagamentos
+	@Column(name = "tipo_pagto", length = 20, nullable = false)// esta linha cria uma coluna com o nome no banco
 	private TipoPagamento tipoPagto;
 	
-	@OneToOne(mappedBy = "pagamento")
+	@OneToOne(mappedBy = "pagamento")//esta linha esta chamando o pagamento pelo produto, "está colocando uma chave estrangeira na tabela"
 	private Pedido pedido;
 	
 
